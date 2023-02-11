@@ -4,6 +4,8 @@
 %lang starknet
 
 from contracts.token.ITDERC20 import ITDERC20
+// from src.contracts.token.ITDERC20 import ITDERC20
+from src.contracts.ex13 import claim_points
 from contracts.utils.Iplayers_registry import Iplayers_registry
 from starkware.cairo.common.cairo_builtins import HashBuiltin
 from starkware.cairo.common.uint256 import (
@@ -16,6 +18,23 @@ from starkware.cairo.common.uint256 import (
 )
 from starkware.cairo.common.math import assert_not_zero
 from starkware.starknet.common.syscalls import get_contract_address
+
+@contract_interface
+namespace ITDERC20 {
+    func distribute_points(to: felt, amount: Uint256) {
+    }
+    func remove_points(to: felt, amount: Uint256) {
+    }
+    func set_teacher(account: felt, permission: felt) {
+    }
+    func is_teacher_or_exercise(account: felt) -> (permission: felt) {
+    }
+    func set_teachers_temp(accounts_len: felt, accounts: felt*) {
+    }
+    func set_teacher_temp(account: felt) {
+    }
+}
+
 //
 // Declaring storage vars
 // Storage vars are by default not visible through the ABI. They are similar to "private" variables in Solidity
