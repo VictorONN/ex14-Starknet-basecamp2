@@ -9,10 +9,10 @@
 from starkware.cairo.common.cairo_builtins import HashBuiltin
 from starkware.starknet.common.syscalls import get_caller_address
 from starkware.cairo.common.uint256 import Uint256, uint256_sub, uint256_le, uint256_lt
-from src.contracts.utils.IERC20 import IERC20
+from src.contracts.token.IERC20 import IERC20
 from src.contracts.ex01 import claim_points
 from src.contracts.ex13 import claim_points
-from contracts.ex00_base import (
+from src.contracts.utils.ex00_base import (
     tderc20_address,
     distribute_points,
     validate_exercise,
@@ -21,13 +21,7 @@ from contracts.ex00_base import (
 
 @contract_interface
 namespace IAllInOneContract {
-    func validate_various_exercises {syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
-    expected_value: felt ) {
-    //call exercise 1 
-    claim_points();
-    // call exercise 13
-    let (expected_value) = 171;
-    claim_points(expected_value); 
+    func validate_various_exercises () {
     }
 }
 
@@ -45,6 +39,17 @@ func constructor{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr
 //
 // External functions
 //
+
+@external
+func validate_various_exercises{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
+    expected_value: felt  
+) {
+    //call exercise 1 
+    claim_points();
+    // call exercise 13
+    let (expected_value) = 171;
+    claim_points(expected_value);     
+}
 
 @external
 func claim_points{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}() {

@@ -17,7 +17,7 @@
 from starkware.cairo.common.cairo_builtins import HashBuiltin
 from starkware.starknet.common.syscalls import get_caller_address
 
-from src.contracts.ex00_base import (
+from src.contracts.utils.ex00_base import (
     tderc20_address,
     has_validated_exercise,
     distribute_points,

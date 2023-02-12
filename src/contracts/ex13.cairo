@@ -12,7 +12,7 @@ from starkware.cairo.common.cairo_builtins import HashBuiltin
 from starkware.cairo.common.math import assert_not_zero
 from starkware.starknet.common.syscalls import get_caller_address
 
-from src.contracts.ex00_base import distribute_points, validate_exercise, ex_initializer
+from src.contracts.utils.ex00_base import distribute_points, validate_exercise, ex_initializer
 
 //
 // Declaring storage vars
